@@ -79,7 +79,18 @@ main,main>section,#intranet,#intranet form,#intranet section,#intranet form labe
 <p>Inicia sesión con Google para enviar y consultar tu solicitud. Secretaría y administración revisan los antecedentes de forma privada.</p>
 <ol class="secretaria-steps"><li>Consulta y revisión reglamentaria</li><li>Carga de documentos</li><li>Coordinación y firma presencial</li></ol>
 <details><summary>Procedimiento de inscripción deportiva</summary><p>Primero envía tu nombre, RUN, fecha de nacimiento y contacto. Secretaría tramitará la consulta de tu situación deportiva ante la Asociación de Fútbol de Olmué y te informará si puedes avanzar o necesitas resolver observaciones. Luego podrás cargar los documentos y, cuando sean revisados, el club te contactará para coordinar la firma presencial. La confirmación de Secretaría se basa en la respuesta de la asociación y en el reglamento aplicable.</p><p>Para mayores de edad se solicita certificado de antecedentes, conforme al requisito documental publicado por ARFA para incorporaciones y cambios de equipo. Los menores deben indicar a su apoderado.</p><p><a href="https://arfa5.cl/2025/06/10/%E2%9E%A1%EF%B8%8F-atencion/" target="_blank" rel="noopener">Requisito documental publicado por ARFA</a> · <a href="https://arfa5.cl/2025/05/24/reglamento-arfa-2019/" target="_blank" rel="noopener">Reglamento publicado por ARFA</a></p></details>
-<details><summary>Ingreso como socio</summary><p>El club tiene personalidad jurídica municipal bajo la Ley 19.418. El ingreso es voluntario y se tramita conforme a los requisitos legales y estatutarios. Para pertenecer a una organización comunitaria funcional se exige tener al menos 15 años y domicilio en la comuna o agrupación de comunas respectiva. Secretaría verificará estos antecedentes para incorporar al socio al registro correspondiente.</p><p><a href="https://www.bcn.cl/leychile/navegar?idNorma=70040" target="_blank" rel="noopener">Organizaciones comunitarias, Ley 19.418</a></p></details>
+<details id="socios-guide" open><summary>Ser socio de Santa Laura · Ingreso, derechos y deberes</summary>
+<p>El club tiene personalidad jurídica municipal bajo la Ley 19.418. El ingreso es voluntario. Se requiere tener al menos 15 años y domicilio en la comuna o agrupación de comunas correspondiente.</p>
+<h3>Cómo solicitar tu inscripción</h3>
+<ol><li>Inicia sesión con Google y elige «Solicitud de socio» en el formulario. Completa nombre, RUN, nacimiento, domicilio, comuna y teléfono o correo de contacto.</li><li>Secretaría verifica los requisitos legales y estatutarios y comunica las observaciones o habilita la entrega de antecedentes. Puedes consultar el estado desde tu cuenta.</li><li>Cuando se habilite esa etapa, adjunta los documentos solicitados en el formulario. Secretaría revisa la documentación y coordina contigo la firma que corresponda.</li><li>Secretaría formaliza la incorporación en el registro de socios conforme a los estatutos y confirma su fecha de ingreso. La firma y el registro deben quedar documentados por el club.</li></ol>
+<h3>Tus derechos</h3>
+<ul><li>Participar en asambleas con voz y voto personal.</li><li>Elegir representantes y postular cumpliendo los requisitos legales.</li><li>Presentar iniciativas al directorio.</li><li>Consultar actas, contabilidad y registro de afiliados por los canales correspondientes.</li><li>Solicitar censura conforme a la ley y retirarte voluntariamente.</li></ul>
+<h3>Deberes y compromisos</h3>
+<p>Cumplir la ley, los estatutos y los acuerdos válidamente adoptados. Las obligaciones específicas de participación, convivencia, cuidado de bienes y pago de cuotas deben corresponder a los estatutos y acuerdos del club. Secretaría debe facilitar su consulta antes de formalizar el ingreso.</p>
+<h3>Cuotas e información del club</h3>
+<p>Los montos y la recaudación se fijan conforme a las reglas de la organización. Secretaría informará el monto vigente, periodicidad y forma de pago cuando corresponda. Los estatutos vigentes todavía deben incorporarse a esta sección.</p>
+<p>Esta solicitud registra tu interés y permite tramitar los antecedentes. Secretaría confirmará la incorporación al registro. Los antecedentes de ANFA para jugar se revisan mediante el trámite «Jugador o jugadora».</p>
+<p><a href="https://www.bcn.cl/leychile/navegar?idNorma=70040" target="_blank" rel="noopener">Consultar Ley 19.418 · artículos 5, 10, 12, 13, 15 y 47 del texto refundido</a></p></details>
 <p id="secretaria-access"><a href="#intranet">Iniciar sesión para continuar</a></p>
 <form id="secretaria-request" hidden><h3>Enviar solicitud</h3>
 <label>Trámite <select name="tipo"><option value="jugador">Jugador o jugadora · consulta reglamentaria</option><option value="socio">Solicitud de socio</option></select></label>
@@ -917,7 +928,7 @@ async function refreshSecretary(){
  for(const request of requests){
    const own=request.usuario===user.id;
    const card=document.createElement('article');card.className='secretaria-card';
-   card.append(secText('h3',request.nombre+' · '+(request.tipo==='jugador'?'Inscripción deportiva':'Socio')),secText('p',secLabels[request.estado]));
+   card.append(secText('h3',request.nombre+' · '+(request.tipo==='jugador'?'Inscripción deportiva':'Socio')),secText('p',request.tipo==='socio'&&request.estado==='consulta'?'Solicitud de socio en revisión':secLabels[request.estado]));
    if(request.nota) card.append(secText('p',request.nota));
    if(staff){
      card.append(secText('p',[request.run,request.nacimiento,request.telefono,request.correo].join(' · ')));
@@ -1001,6 +1012,7 @@ secForm.elements.nacimiento.onchange=()=>{secForm.elements.apoderado.required=Bo
 secForm.elements.tipo.onchange=()=>{
  const socio=secForm.elements.tipo.value==='socio';
  document.querySelector('#socio-address').hidden=!socio;
+ document.querySelector('#secretaria-request button[type=submit]').textContent=socio?'Enviar solicitud de socio':'Enviar consulta reglamentaria';
  secForm.elements.domicilio.required=socio;
  secForm.elements.comuna.required=socio;
 };
