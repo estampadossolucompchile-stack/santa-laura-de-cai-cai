@@ -159,3 +159,16 @@ body>.masthead{position:sticky;top:0;z-index:30}
 
 .fixture-upcoming{display:flex;align-items:center;flex-wrap:wrap;justify-content:space-between;gap:8px 16px;margin-bottom:12px;padding:14px 18px;background:#0b2a5b;color:#fff;border-radius:12px}.fixture-upcoming>span{font-size:.75rem;color:#c9d9f5}.fixture-upcoming>strong{font-size:.95rem}.fixture-upcoming small{display:inline;margin:0 8px;color:#a7c1ed;font-size:.75rem}
 @media(max-width:700px){.fixture-upcoming{display:grid;gap:7px}.fixture-upcoming>strong{font-size:1rem}}
+
+/* Calendario: próximas actividades, historial y controles adaptables. */
+#calendario .calendar-filters{display:flex;flex-wrap:wrap;gap:10px;align-items:end;margin:12px 0}
+#calendario .calendar-filters label{display:grid;gap:5px;min-width:0;font-size:.78rem;color:var(--club-muted)}
+#calendario .calendar-filters select{min-height:44px;max-width:100%;padding:9px 30px 9px 11px;border:1px solid var(--club-border);border-radius:9px;background:#fff;color:var(--club-ink);font:inherit}
+.calendar-agenda-guide{color:var(--club-muted);font-size:.8rem;line-height:1.6;margin:8px 0 14px}
+#calendar-grid>button.calendar-past{background:#f6f7fa;color:#7b8491}
+#calendar-grid>button.calendar-past .calendar-event-label{background:#e9edf3;color:#657184;border-left-color:#b5c0d0}
+#calendar-grid>button[aria-current=date]{box-shadow:inset 0 0 0 2px var(--club-blue)}
+.calendar-card-past{background:#f5f6f8;filter:grayscale(.65)}
+.calendar-agenda-reset{font-size:.8rem;background:#edf3ff;color:var(--club-blue);margin:0 0 10px}
+.hero-identity img,.club-brand img,.fixture-teams img[src*="escudo-oficial.svg"]{clip-path:none!important;background:transparent!important;border-radius:0!important;padding:0!important;filter:drop-shadow(0 1px 2px #0003)}
+@media(max-width:700px){#calendario .calendar-filters{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:end}#calendar-today{grid-column:1/-1;justify-self:start;margin:0}#calendario .calendar-filters select{width:100%;min-width:0;font-size:.8rem}.hero-identity img{filter:drop-shadow(0 1px 2px #0005)}}
