@@ -172,3 +172,28 @@ body>.masthead{position:sticky;top:0;z-index:30}
 .calendar-agenda-reset{font-size:.8rem;background:#edf3ff;color:var(--club-blue);margin:0 0 10px}
 .hero-identity img,.club-brand img,.fixture-teams img[src*="escudo-oficial.svg"]{clip-path:none!important;background:transparent!important;border-radius:0!important;padding:0!important;filter:drop-shadow(0 1px 2px #0003)}
 @media(max-width:700px){#calendario .calendar-filters{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:end}#calendar-today{grid-column:1/-1;justify-self:start;margin:0}#calendario .calendar-filters select{width:100%;min-width:0;font-size:.8rem}.hero-identity img{filter:drop-shadow(0 1px 2px #0005)}}
+
+/* Agenda compacta: afiche completo al lado de los datos. */
+#calendar-agenda .calendar-agenda-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:14px 0}
+#calendar-agenda .calendar-activity{display:grid;grid-template-columns:100px minmax(0,1fr);align-items:center;gap:16px;min-width:0;margin:0;padding:14px;border:1px solid var(--club-border);border-radius:12px;background:#f7f9fe;filter:none}
+#calendar-agenda .calendar-activity-content{min-width:0}
+#calendar-agenda .calendar-activity-title{display:block;font-size:.92rem;line-height:1.4;color:var(--club-navy)}
+#calendar-agenda .calendar-activity-meta{font-size:.78rem;color:var(--club-muted);line-height:1.65;margin:7px 0 0;overflow-wrap:anywhere}
+#calendar-agenda .calendar-activity-poster{display:grid;place-items:center;gap:5px;min-width:0;width:100%;min-height:44px;margin:0;padding:5px;background:#eaf0fa;border:1px solid #dce5f4;border-radius:8px;cursor:zoom-in}
+#calendar-agenda .calendar-activity-poster img{width:100%;height:125px;max-height:125px;object-fit:contain;display:block;margin:0;border-radius:4px}
+#calendar-agenda .calendar-activity-poster span{font-size:.65rem;color:var(--club-blue);font-weight:650}
+#calendar-agenda .calendar-activity-date{display:grid;place-content:center;gap:4px;width:100%;height:100px;text-align:center;background:#e8effc;color:var(--club-blue);border:1px solid #dbe5f8;border-radius:10px}
+#calendar-agenda .calendar-activity-date b{font-size:1.9rem;line-height:1}
+#calendar-agenda .calendar-activity-date span{font-size:.78rem;text-transform:uppercase;font-weight:700}
+#calendar-agenda .calendar-card-past{background:#f4f5f8;border-color:#e1e5ec}
+#calendar-agenda .calendar-card-past .calendar-activity-date{background:#e9edf3;color:#697588;border-color:#dce1ea}
+#calendar-agenda .calendar-agenda-more{min-height:44px;padding:10px 18px;background:#eaf1ff;border:1px solid #cbdaf4;color:var(--club-blue);font-size:.85rem;font-weight:700;margin:0 0 12px}
+#calendar-poster-viewer{width:min(94vw,860px);max-width:94vw;max-height:94dvh;border:0;border-radius:14px;padding:16px;color:var(--club-ink);box-shadow:0 20px 80px #06142d60;overflow:auto}
+#calendar-poster-viewer::backdrop{background:#06142ddd}
+.calendar-poster-toolbar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:12px}
+.calendar-poster-toolbar h3{margin:0;font-size:1rem;line-height:1.4}
+#calendar-poster-close{flex:none;min-height:44px;background:var(--club-blue);color:#fff}
+#calendar-poster-full{display:block;width:100%;height:min(72dvh,850px);object-fit:contain;background:#eef2f8;border-radius:8px}
+#calendar-poster-original{display:inline-flex;align-items:center;min-height:44px;margin-top:6px;font-size:.85rem;color:var(--club-blue)}
+@media(max-width:760px){#calendar-agenda .calendar-agenda-cards{grid-template-columns:minmax(0,1fr)}#calendar-agenda .calendar-activity{grid-template-columns:84px minmax(0,1fr);gap:12px;padding:12px}#calendar-agenda .calendar-activity-poster img{height:112px;max-height:112px}#calendar-agenda .calendar-activity-title{font-size:.88rem}#calendar-agenda .calendar-activity-meta{font-size:.75rem}#calendar-agenda .calendar-activity-date{height:88px}#calendar-poster-viewer{padding:10px}#calendar-poster-full{height:70dvh}.calendar-poster-toolbar h3{font-size:.9rem}}
+@media(max-width:360px){#calendar-agenda .calendar-activity{grid-template-columns:70px minmax(0,1fr);gap:10px;padding:10px}#calendar-agenda .calendar-activity-poster img{height:100px;max-height:100px}}
